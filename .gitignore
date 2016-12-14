@@ -2,6 +2,9 @@
 #
 .DS_Store
 
+# AuthCredentials
+auth0-credentials.js
+
 # Xcode
 #
 build/
