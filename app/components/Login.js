@@ -8,8 +8,6 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-// import userContainer from '../containers/userContainer';
-// import Search from './Search';
 import Auth0Lock from 'react-native-lock';
 const credentials = require('../../auth0-credentials');
 const lock = new Auth0Lock(credentials);
@@ -41,7 +39,8 @@ export default class Login extends Component {
         return;
       }
       this.props.navigator.push({
-        name: 'Profile',
+        component: Profile,
+        title: 'Profile',
         passProps: {
           profile: profile,
           token: token,
@@ -49,27 +48,12 @@ export default class Login extends Component {
       });
     });
   }
-
-  // _onLogin() {
-
-  //   // const { getUser } = this.props;
-  //
-  //   lock.show({
-  //   }, (err, profile, token) => {
-  //     if (err) {
-  //       console.log(err);
-  //       return;
-  //     } else { console.log(profile); }
-  //   })
-  //   // getUser(profile)
-  // }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    // justifyContent: 'center',
   },
   signInButton: {
     height: 50,
