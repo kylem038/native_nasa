@@ -2,7 +2,7 @@
 #
 .DS_Store
 
-# Auth0 Creds
+# AuthCredentials
 auth0-credentials.js
 
 # Xcode

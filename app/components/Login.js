@@ -11,8 +11,8 @@ import {
 // import userContainer from '../containers/userContainer';
 // import Search from './Search';
 import Auth0Lock from 'react-native-lock';
-let credentials = require('../../auth0-credentials');
-let lock = new Auth0Lock(credentials);
+const credentials = require('../../auth0-credentials');
+const lock = new Auth0Lock(credentials);
 
 export default class Login extends Component {
   constructor() {
@@ -24,7 +24,7 @@ export default class Login extends Component {
       <View style={styles.container}>
         <TouchableHighlight
           style={styles.signInButton}
-          onPress={this._onLogin.bind(this)}
+          onPress={this._onLogin}
         >
           <Text>Login</Text>
         </TouchableHighlight>
@@ -33,17 +33,36 @@ export default class Login extends Component {
   }
 
   _onLogin() {
-    // const { getUser } = this.props;
-
     lock.show({
+      closable: true,
     }, (err, profile, token) => {
       if (err) {
         console.log(err);
         return;
       }
-    })
-    // getUser(profile)
+      this.props.navigator.push({
+        name: 'Profile',
+        passProps: {
+          profile: profile,
+          token: token,
+        }
+      });
+    });
   }
+
+  // _onLogin() {
+
+  //   // const { getUser } = this.props;
+  //
+  //   lock.show({
+  //   }, (err, profile, token) => {
+  //     if (err) {
+  //       console.log(err);
+  //       return;
+  //     } else { console.log(profile); }
+  //   })
+  //   // getUser(profile)
+  // }
 }
 
 const styles = StyleSheet.create({
