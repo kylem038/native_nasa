@@ -57,7 +57,13 @@ class Search extends Component{
       method: "GET"
     })
     .then((response) => response.json())
-    .then((responseJSON) => console.table(responseJSON))
+    .then((responseJSON) => {
+      const meteorNumber = responseJSON.length;
+      Alert.alert(
+        'Success!',
+        `We found ${meteorNumber} meteors!`,
+      )
+    })
     .catch((error) => {
       Alert.alert(
         'Request Failed',

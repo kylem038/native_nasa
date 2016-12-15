@@ -28,7 +28,7 @@ export default class App extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={routes[0]}
+        initialRoute={routes[2]}
         initialRouteStack={routes}
         renderScene={(route, navigator) => {
           let RouteComponent = route.component;
