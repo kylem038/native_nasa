@@ -57,7 +57,7 @@ class Search extends Component{
       method: "GET"
     })
     .then((response) => response.json())
-    .then((responseJSON) => console.log(responseJSON))
+    .then((responseJSON) => console.table(responseJSON))
     .catch((error) => {
       Alert.alert(
         'Request Failed',
