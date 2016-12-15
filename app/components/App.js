@@ -10,10 +10,14 @@ import {
 
 import Login from './Login';
 import Profile from './Profile';
+import Search from './Search';
+import Visuals from './Visuals';
 
 const routes = [
   { component: Login, title: 'Login to search' },
   { component: Profile, title: 'Profile' },
+  { component: Search, title: 'Search' },
+  { component: Visuals, title: 'Visuals' },
 ];
 
 export default class App extends Component {
