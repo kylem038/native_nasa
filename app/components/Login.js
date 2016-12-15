@@ -8,6 +8,8 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
+
+import Profile from './Profile';
 import Auth0Lock from 'react-native-lock';
 const credentials = require('../../auth0-credentials');
 const lock = new Auth0Lock(credentials);
@@ -18,7 +20,6 @@ export default class Login extends Component {
   // }
 
   render() {
-    debugger
     return (
       <View style={styles.container}>
         <TouchableHighlight
@@ -42,10 +43,10 @@ export default class Login extends Component {
       this.props.navigator.push({
         component: Profile,
         title: 'Profile',
-        passProps: {
-          profile: profile,
-          token: token,
-        }
+        // passProps: {
+        //   profile: profile,
+        //   token: token,
+        // }
       });
     });
   }

@@ -41,11 +41,13 @@ export default class Profile extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'blue',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    // flex: 1,
+    // flexDirection: 'column',
+    // backgroundColor: 'blue',
+    // justifyContent: 'flex-start',
+    // alignItems: 'center',
+    height: 200,
+    width: 200,
   },
   name: {
     fontSize: 42,
