@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import userContainer from '../containers/userContainer';
+import Search from './Search';
 
 class Profile extends Component {
   constructor(props) {
@@ -38,6 +39,14 @@ class Profile extends Component {
           onPress={() => this.props.navigator.pop()}
         >
           <Text>Logout</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.props.navigator.push({
+            component: Search,
+            title: "Search"
+          })}
+        >
+          <Text>Go To Search</Text>
         </TouchableHighlight>
       </View>);
     } else {
