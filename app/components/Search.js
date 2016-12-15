@@ -13,6 +13,8 @@ import {
   Animated
 } from 'react-native';
 
+const _ = require('underscore');
+
 import userContainer from '../containers/userContainer';
 import Visuals from './Visuals';
 
@@ -58,11 +60,12 @@ class Search extends Component{
     })
     .then((response) => response.json())
     .then((responseJSON) => {
-      const meteorNumber = responseJSON.length;
-      Alert.alert(
-        'Success!',
-        `We found ${meteorNumber} meteors!`,
-      )
+      responseJSON.slice(0,99).map((meteor) => meteor.mass);
+      // const meteorNumber = responseJSON.length;
+      // Alert.alert(
+      //   'Success!',
+      //   `We found ${meteorNumber} meteors!`,
+      // )
     })
     .catch((error) => {
       Alert.alert(
