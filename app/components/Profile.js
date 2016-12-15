@@ -35,7 +35,7 @@ class Profile extends Component {
           <Text style={styles.email}>{user.email}</Text>
         </View>
         <TouchableHighlight
-          // onPress={}
+          onPress={() => this.props.navigator.pop()}
         >
           <Text>Logout</Text>
         </TouchableHighlight>
@@ -51,11 +51,13 @@ export default userContainer(Profile);
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'center',
     height: 300,
     width: 350,
+    margin: 50,
   },
   name: {
-    fontSize: 42,
+    fontSize: 32,
     margin: 20,
     fontWeight: '300',
   },
@@ -65,8 +67,7 @@ const styles = StyleSheet.create({
     fontWeight: '100',
   },
   picture: {
-    height: 150,
-    width: 150,
-    borderRadius: 75,
+    height: 100,
+    width: 100,
   }
 })
