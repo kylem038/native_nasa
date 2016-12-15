@@ -24,7 +24,9 @@ export default class App extends Component {
         renderScene={(route, navigator) => {
           let RouteComponent = route.component;
           return (
-            <RouteComponent {...route} navigator={navigator} />
+            <View>
+              <RouteComponent {...route} navigator={navigator} />
+            </View>
           )
         }}
       />

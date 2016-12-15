@@ -13,16 +13,17 @@ const credentials = require('../../auth0-credentials');
 const lock = new Auth0Lock(credentials);
 
 export default class Login extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
   render() {
+    debugger
     return (
       <View style={styles.container}>
         <TouchableHighlight
           style={styles.signInButton}
-          onPress={this._onLogin}
+          onPress={this._onLogin.bind(this)}
         >
           <Text>Login</Text>
         </TouchableHighlight>
