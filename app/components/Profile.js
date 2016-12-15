@@ -29,10 +29,10 @@ class Profile extends Component {
         <View>
           <Image
             style={styles.picture}
-            // source={{uri: this.props.passProps.profile.picture}}
+            source={{uri: user.picture}}
           />
-          <Text style={styles.name}>Hello User</Text>
-          {/* <Text style={styles.email}>{this.props.profile.email}</Text> */}
+          <Text style={styles.name}>Hello {user.name}</Text>
+          <Text style={styles.email}>{user.email}</Text>
         </View>
         <TouchableHighlight
           // onPress={}
