@@ -31,6 +31,7 @@ class Search extends Component{
        <View style={styles.container}>
         <Text style={styles.text}>The Goonies</Text>
         <TouchableHighlight
+          style={styles.button}
           onPress={() => this.props.navigator.push({
             component: Visuals,
             title: "Visuals"
@@ -38,10 +39,33 @@ class Search extends Component{
         >
           <Text>Go To Visualization</Text>
         </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this._onCallApi.bind(this)}
+        >
+          <Text>Log Data</Text>
+        </TouchableHighlight>
        </View>
      )
    }
    return (null)
+  }
+
+  _onCallApi() {
+    let API_ENDPOINT = `https://data.nasa.gov/resource/y77d-th95.json`;
+    fetch(API_ENDPOINT, {
+      method: "GET"
+    })
+    .then((response) => response.json())
+    .then((responseJSON) => console.log(responseJSON))
+    .catch((error) => {
+      Alert.alert(
+        'Request Failed',
+        [
+          {text: 'OK'},
+        ]
+      )
+    });
   }
 }
 
@@ -54,5 +78,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#0A6ECC',
+  },
+  button: {
+    borderColor: 'black',
+    borderWidth: 1,
+    margin: 5,
   }
 });
