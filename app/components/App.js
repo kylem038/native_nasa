@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet } from 'react-native';
 import {
+  AppRegistry,
+  StyleSheet,
+  Navigator,
   Text,
-  View
+  View,
+  TouchableHighlight
 } from 'react-native';
 
 import Login from './Login';
+import Profile from './Profile';
 
+const routes = [
+  { component: Login, title: 'Login to search' },
+  { component: Profile, title: 'Profile' },
+];
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
-      <View>
-        <Text style={styles.hello}>Native NASA</Text>
-        <Login />
-      </View>
+      <Navigator
+        initialRoute={routes[0]}
+        initialRouteStack={routes}
+        renderScene={(route, navigator) => {
+          let RouteComponent = route.component;
+          return (
+              <RouteComponent {...route} navigator={navigator} />
+          )
+        }}
+      />
     );
   }
 }
