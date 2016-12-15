@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Dimensions from 'Dimensions';
 import {
   StyleSheet,
   Text,
@@ -8,16 +7,16 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-
 import Profile from './Profile';
+import userContainer from '../containers/userContainer';
 import Auth0Lock from 'react-native-lock';
 const credentials = require('../../auth0-credentials');
 const lock = new Auth0Lock(credentials);
 
-export default class Login extends Component {
-  // constructor() {
-  //   super();
-  // }
+class Login extends Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
@@ -33,6 +32,8 @@ export default class Login extends Component {
   }
 
   _onLogin() {
+    const { getUser } = this.props
+
     lock.show({
       closable: true,
     }, (err, profile, token) => {
@@ -40,17 +41,18 @@ export default class Login extends Component {
         console.log(err);
         return;
       }
+      getUser(profile)
       this.props.navigator.push({
         component: Profile,
         title: 'Profile',
-        // passProps: {
-        //   profile: profile,
-        //   token: token,
-        // }
+        profile: profile,
+        token: token,
       });
     });
   }
 }
+
+export default userContainer(Login);
 
 const styles = StyleSheet.create({
   container: {

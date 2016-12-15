@@ -13,18 +13,23 @@ import {
   Animated
 } from 'react-native';
 
-export default class Profile extends Component {
+import userContainer from '../containers/userContainer';
+
+class Profile extends Component {
   constructor(props) {
     super(props);
+    this.state = {};
   }
 
   render() {
-    return(
+    const { user } = this.props;
+    if (user) {
+      return(
       <View style={styles.container}>
         <View>
           <Image
             style={styles.picture}
-            // source={{uri: this.props.profile.picture}}
+            // source={{uri: this.props.passProps.profile.picture}}
           />
           <Text style={styles.name}>Hello User</Text>
           {/* <Text style={styles.email}>{this.props.profile.email}</Text> */}
@@ -34,20 +39,20 @@ export default class Profile extends Component {
         >
           <Text>Logout</Text>
         </TouchableHighlight>
-      </View>
-    );
+      </View>);
+    } else {
+      return null;
+    }
   }
 }
 
+export default userContainer(Profile);
+
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // flexDirection: 'column',
-    // backgroundColor: 'blue',
-    // justifyContent: 'flex-start',
-    // alignItems: 'center',
-    height: 200,
-    width: 200,
+    alignItems: 'center',
+    height: 300,
+    width: 350,
   },
   name: {
     fontSize: 42,
