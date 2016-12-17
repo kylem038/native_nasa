@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Navigator,
+  StyleSheet,
   Text,
-  View,
-  TouchableHighlight
+  TouchableHighlight,
+  View
 } from 'react-native';
 
 import Login from './Login';

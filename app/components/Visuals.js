@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
   Alert,
-  TextInput,
+  Animated,
+  Image,
   ScrollView,
   Switch,
-  Animated
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View
 } from 'react-native';
 
 export default class Visuals extends Component {
@@ -21,25 +21,49 @@ export default class Visuals extends Component {
 
  render() {
     return (
-      <View style={styles.visualize} >
+      <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
         <Text style={styles.text}>Visuals</Text>
         <TouchableHighlight
+          style={styles.button}
           onPress={() => this.props.navigator.pop()}
         >
-          <Text>Back</Text>
+          <Text style={styles.buttonText}>Back</Text>
         </TouchableHighlight>
-      </View>
+      </Image>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  visualize: {
+  container: {
     flex: 1,
-    marginTop: 100,
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: null,
+    height: null,
   },
   text: {
-    color: '#5D4152',
+    color: 'white',
+    fontSize: 35,
     textAlign: 'center',
+    top: 20,
   },
+  button: {
+    height: 50,
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
+    borderColor: '#1E77E2',
+    borderWidth: 2,
+    margin: 10,
+    shadowColor: '#1b71E2',
+    shadowRadius: 10,
+    borderRadius: 5,
+    top: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'red',
+    fontSize: 25,
+  }
 });

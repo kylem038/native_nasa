@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
+  Animated,
   Alert,
-  TextInput,
+  Image,
   ScrollView,
+  StyleSheet,
   Switch,
-  Animated
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View
 } from 'react-native';
 
 const _ = require('underscore');
 
 import userContainer from '../containers/userContainer';
+import meteorContainer from '../containers/meteorContainer';
+import Profile from './Profile';
 import Visuals from './Visuals';
+import Results from './Results';
 
 class Search extends Component{
   constructor (props) {
@@ -27,11 +30,21 @@ class Search extends Component{
  }
 
  render() {
-   const { user } = this.props;
+   const { user, meteors } = this.props;
    if(user) {
      return (
-       <View style={styles.container}>
-        <Text style={styles.text}>The Goonies</Text>
+       <Image source={require('../assets/space-bkgd.png')}
+          style={styles.container}>
+        <Text style={styles.text}>Search Page</Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigator.push({
+            component: Profile,
+            title: "Profile"
+          })}
+        >
+          <Text style={styles.buttonText}>Profile</Text>
+        </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
           onPress={() => this.props.navigator.push({
@@ -39,15 +52,21 @@ class Search extends Component{
             title: "Visuals"
           })}
         >
-          <Text>Go To Visualization</Text>
+          <Text style={styles.buttonText}>Go To Visualization</Text>
         </TouchableHighlight>
         <TouchableHighlight
           style={styles.button}
           onPress={this._onCallApi.bind(this)}
         >
-          <Text>Log Data</Text>
+          <Text style={styles.buttonText}>Search</Text>
         </TouchableHighlight>
-       </View>
+        <ScrollView
+          style={styles.scrollView}>
+          {meteors.map(function(meteor, i) {
+            return <Results key={i} meteor={meteor} />}
+          )}
+        </ScrollView>
+      </Image>
      )
    }
    return (null)
@@ -60,11 +79,16 @@ class Search extends Component{
     })
     .then((response) => response.json())
     .then((responseJSON) => {
-      responseJSON.slice(0,99).map((meteor) => meteor.mass);
-      // const meteorNumber = responseJSON.length;
+      // getMeteors(responseJSON)
+      console.log(responseJSON.map((meteor) => meteor.year));
+      const meteorNumber = responseJSON.length;
+      // const meteorNames = responseJSON.
       // Alert.alert(
       //   'Success!',
       //   `We found ${meteorNumber} meteors!`,
+      //   [
+      //     {text: 'OK'},
+      //   ]
       // )
     })
     .catch((error) => {
@@ -78,19 +102,45 @@ class Search extends Component{
   }
 }
 
-export default userContainer(Search);
+export default meteorContainer(
+                userContainer(Search)
+              )
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
-    margin: 50,
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: null,
+    height: null,
   },
   text: {
-    color: '#0A6ECC',
+    color: 'white',
+    fontSize: 35,
+    fontWeight: '300',
+    top: 20,
   },
   button: {
-    borderColor: 'black',
-    borderWidth: 1,
-    margin: 5,
-  }
+    height: 50,
+    alignSelf: 'stretch',
+    backgroundColor: '#fff',
+    borderColor: '#1E77E2',
+    borderWidth: 2,
+    margin: 10,
+    shadowColor: '#1b71E2',
+    shadowRadius: 10,
+    borderRadius: 5,
+    top: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'red',
+    fontSize: 25,
+  },
+  scrollView: {
+    // top: 20,
+    // backgroundColor: '#1E77E2',
+    // height: 400
+  },
 });

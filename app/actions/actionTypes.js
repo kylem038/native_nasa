@@ -1,4 +1,4 @@
 export const types = {
   GET_USER: 'GET_USER',
-  GET_METEOR: 'GET_METEOR',
+  GET_METEORS: 'GET_METEORS',
 };

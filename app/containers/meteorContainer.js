@@ -7,8 +7,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getMeteor: (meteors) => {
-       dispatch(actionCreators.getMeteor(meteors));
+    getMeteors: (meteors) => {
+       dispatch(actionCreators.getMeteors(meteors));
      }
   };
 };
