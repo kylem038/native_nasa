@@ -14,7 +14,7 @@ import {
   Dimensions
 } from 'react-native';
 
-import MeteorModal from './MeteorModal';
+const moment = require('moment');
 
 export default class Row extends Component{
   constructor (props) {
@@ -28,9 +28,9 @@ export default class Row extends Component{
     const { meteor } = this.props;
     return (
       <View style={styles.meteorRow}>
-        <MeteorModal style={styles.modal}
-                   visible={this.state.showModal}
-                   meteor={meteor} />
+        <Text style={styles.nameText}>Name: {meteor.name}</Text>
+        <Text style={styles.nameText}>Mass: {meteor.mass}</Text>
+        <Text style={styles.nameText}>Year: {moment(meteor.year).format('YYYY')}</Text>
       </View>
     );
   }
@@ -45,5 +45,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: 300,
     height: 100,
+  },
+  nameText: {
+    color: 'red',
   },
 })

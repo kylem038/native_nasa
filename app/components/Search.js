@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   scrollView: {
-    top: 20,
+    top: 30,
     backgroundColor: '#1E77E2',
     height: 800,
   },
