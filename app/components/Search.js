@@ -19,7 +19,7 @@ import userContainer from '../containers/userContainer';
 import meteorContainer from '../containers/meteorContainer';
 import Profile from './Profile';
 import Visuals from './Visuals';
-import Results from './Results';
+import Row from './Row';
 
 class Search extends Component{
   constructor (props) {
@@ -63,7 +63,7 @@ class Search extends Component{
         <ScrollView
           style={styles.scrollView}>
           {meteors.map(function(meteor, i) {
-            return <Results key={i} meteor={meteor} />}
+            return <Row key={i} meteor={meteor} />}
           )}
         </ScrollView>
       </Image>
@@ -73,18 +73,20 @@ class Search extends Component{
   }
 
   _onCallApi() {
+    const component = this;
+    const { getMeteors } = this.props;
+
     let API_ENDPOINT = `https://data.nasa.gov/resource/y77d-th95.json`;
     fetch(API_ENDPOINT, {
       method: "GET"
     })
     .then((response) => response.json())
     .then((responseJSON) => {
-      // getMeteors(responseJSON)
+      getMeteors(responseJSON);
       const meteorYearList = responseJSON.map((meteor) => meteor.year);
       const meteorsByYear = _.sortBy(meteorYearList);
-      console.log(meteorsByYear);
+
       const meteorNumber = responseJSON.length;
-      // const meteorNames = responseJSON.
       // Alert.alert(
       //   'Success!',
       //   `We found ${meteorNumber} meteors!`,
@@ -94,6 +96,7 @@ class Search extends Component{
       // )
     })
     .catch((error) => {
+      getMeteors([]);
       Alert.alert(
         'Request Failed',
         [
@@ -141,8 +144,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   scrollView: {
-    // top: 20,
-    // backgroundColor: '#1E77E2',
-    // height: 400
+    top: 20,
+    backgroundColor: '#1E77E2',
+    height: 800,
   },
 });
