@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Navigator,
+  StyleSheet,
   Text,
-  View,
-  TouchableHighlight
+  TouchableHighlight,
+  View
 } from 'react-native';
 
 import Login from './Login';
@@ -28,7 +28,7 @@ export default class App extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={routes[0]}
+        initialRoute={routes[2]}
         initialRouteStack={routes}
         renderScene={(route, navigator) => {
           let RouteComponent = route.component;

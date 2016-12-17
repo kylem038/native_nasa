@@ -6,7 +6,7 @@ const meteors = (state = initialState, action) => {
   const { type, data } = action;
 
   switch (type) {
-    case 'GET_METEOR':
+    case 'GET_METEORS':
       return data;
   }
   return state;

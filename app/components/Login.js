@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
+  Image,
   StyleSheet,
   Text,
-  View,
-  Image,
   TouchableHighlight,
+  View,
 } from 'react-native';
 
 import Profile from './Profile';
@@ -20,14 +20,15 @@ class Login extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
+        <Text style={styles.text}>Native NASA</Text>
         <TouchableHighlight
           style={styles.signInButton}
           onPress={this._onLogin.bind(this)}
         >
-          <Text>Login</Text>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
-      </View>
+      </Image>
     )
   }
 
@@ -58,14 +59,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    alignItems: 'center',
+    width: null,
+    height: null,
+  },
+  text: {
+    color: 'red',
+    fontSize: 35,
+    fontWeight: '300',
+    top: 60,
+    // fontFamily: 'Nasalization',
   },
   signInButton: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#D9DADF',
-    margin: 100,
-    borderRadius: 5,
+    height: 100,
+    width: 100,
+    borderRadius: 100,
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderColor: 'red',
+    borderWidth: 3,
+    margin: 10,
+    shadowColor: '#1b71E2',
+    shadowRadius: 10,
+    top: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  buttonText: {
+    color: 'red',
+    fontSize: 25,
+  }
 });
