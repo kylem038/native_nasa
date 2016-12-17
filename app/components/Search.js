@@ -80,7 +80,9 @@ class Search extends Component{
     .then((response) => response.json())
     .then((responseJSON) => {
       // getMeteors(responseJSON)
-      console.log(responseJSON.map((meteor) => meteor.year));
+      const meteorYearList = responseJSON.map((meteor) => meteor.year);
+      const meteorsByYear = _.sortBy(meteorYearList);
+      console.log(meteorsByYear);
       const meteorNumber = responseJSON.length;
       // const meteorNames = responseJSON.
       // Alert.alert(
