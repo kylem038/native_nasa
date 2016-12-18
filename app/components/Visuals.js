@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import meteorContainer from '../containers/meteorContainer';
-import FellPerYearChart from './FellPerYearChart';
-
 import {
   Alert,
   Animated,
@@ -16,17 +13,39 @@ import {
   View
 } from 'react-native';
 
+import MassChart from './MassChart';
+import FellPerYearChart from './FellPerYearChart';
+import meteorContainer from '../containers/meteorContainer';
+
 class Visuals extends Component {
   constructor (props) {
    super(props);
  }
 
  render() {
+   const { meteors } = this.props;
+
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
         <Text style={styles.text}>Visuals</Text>
-        <Text style={styles.text}>Meteors Per Year</Text>
-        <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => this.props.navigator.pop()}
+        >
+          <Text style={styles.buttonText}>Back</Text>
+        </TouchableHighlight>
+        <ScrollView>
+        <View
+          style={styles.visuals}
+        >
+          <Text style={styles.title}>Meteorite Mass</Text>
+          <MassChart meteors={this.props.meteors}/>
+        </View>
+        <View>
+          <Text style={styles.text}>Meteors Per Year</Text>
+          <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
+        </View>
+        </ScrollView>
       </Image>
     )
   }
@@ -51,5 +70,17 @@ const styles = StyleSheet.create({
   chart: {
     backgroundColor: 'white',
   },
-
+  buttonText: {
+    color: 'red',
+    fontSize: 25,
+  },
+  visuals: {
+    top: 50,
+  },
+  title: {
+    color: 'white',
+    fontSize: 25,
+    textAlign: 'center',
+    // top: 20,
+  }
 });
