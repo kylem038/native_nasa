@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import {
   Alert,
   Animated,
@@ -15,6 +14,7 @@ import {
 } from 'react-native';
 
 import MassChart from './MassChart';
+import FellPerYearChart from './FellPerYearChart';
 import meteorContainer from '../containers/meteorContainer';
 
 class Visuals extends Component {
@@ -34,19 +34,24 @@ class Visuals extends Component {
         >
           <Text style={styles.buttonText}>Back</Text>
         </TouchableHighlight>
+        <ScrollView>
         <View
           style={styles.visuals}
         >
           <Text style={styles.title}>Meteorite Mass</Text>
           <MassChart meteors={this.props.meteors}/>
         </View>
+        <View>
+          <Text style={styles.text}>Meteors Per Year</Text>
+          <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
+        </View>
+        </ScrollView>
       </Image>
     )
   }
 }
 
 export default meteorContainer(Visuals);
-
 
 const styles = StyleSheet.create({
   container: {
@@ -62,19 +67,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     top: 20,
   },
-  button: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderColor: '#1E77E2',
-    borderWidth: 2,
-    margin: 10,
-    shadowColor: '#1b71E2',
-    shadowRadius: 10,
-    borderRadius: 5,
-    top: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+  chart: {
+    backgroundColor: 'white',
   },
   buttonText: {
     color: 'red',
