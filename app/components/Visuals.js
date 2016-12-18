@@ -24,7 +24,9 @@ class Visuals extends Component {
  render() {
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
-        <FellPerYearChart meteors={this.props.meteors}/>
+        <Text style={styles.text}>Visuals</Text>
+        <Text style={styles.text}>Meteors Per Year</Text>
+        <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
       </Image>
     )
   }
@@ -46,22 +48,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     top: 20,
   },
-  button: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderColor: '#1E77E2',
-    borderWidth: 2,
-    margin: 10,
-    shadowColor: '#1b71E2',
-    shadowRadius: 10,
-    borderRadius: 5,
-    top: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+  chart: {
+    backgroundColor: 'white',
   },
-  buttonText: {
-    color: 'red',
-    fontSize: 25,
-  }
+
 });

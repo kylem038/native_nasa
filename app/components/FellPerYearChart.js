@@ -108,7 +108,7 @@ export default class FellPerYearChart extends Component{
 
 const styles = StyleSheet.create({
   yearChart: {
-    top: 10,
+    top: 20,
     height: 100,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -122,7 +122,4 @@ const styles = StyleSheet.create({
   },
   barPageCount: {
   },
-  text: {
-    color: 'yellow',
-  }
 });
