@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 const _ = require('underscore');
 const moment = require('moment');
 
-
 import {
   StyleSheet,
   Text,
@@ -18,83 +17,97 @@ export default class FellPerYearChart extends Component{
    this.state = {
      bounceValue: new Animated.Value(0.7)
    };
- }
-
- componentDidMount() {
-   requestAnimationFrame(() => {
-  			this._animateIn();
-    });
   }
 
-  _animateIn = () => {
-    Animated.spring(
-      this.state.bounceValue,
-      {
-        toValue: 1,
-        friction: 1,
-      }
-    ).start(this._animateOut);
-  }
+ // componentDidMount() {
+ //   requestAnimationFrame(() => {
+ //  			this._animateIn();
+ //    });
+ //  }
 
-  _animateOut = () => {
-    Animated.spring(
-      this.state.bounceValue,
-      {
-        toValue: 0.8,
-        friction: 1,
-      }
-    ).start(this._animateIn);
-  };
+  // _animateIn = () => {
+  //   Animated.spring(
+  //     this.state.bounceValue,
+  //     {
+  //       toValue: 1,
+  //       friction: 1,
+  //     }
+  //   ).start(this._animateOut);
+  // }
+
+  // _animateOut = () => {
+  //   Animated.spring(
+  //     this.state.bounceValue,
+  //     {
+  //       toValue: 0.8,
+  //       friction: 1,
+  //     }
+  //   ).start(this._animateIn);
+  // };
 
  render() {
-   const { meteors } = this.props;
+   function findFirstBatch(year) {
+     if(year <= 1850) { return year; }
+   }
+   function findSecondBatch(year) {
+     if(year > 1850 && year <= 1900) { return year; }
+   }
+   function findThirdBatch(year) {
+     if(year > 1900 && year <= 1950) { return year; }
+   }
+   function findFourthBatch(year) {
+     if(year > 1950 && year <= 2000) { return year; }
+   }
+   function findFifthBatch(year) {
+     if(year > 2000) { return year; }
+   }
+
+   let { bounceValue } = this.state;
    const meteorYearList = this.props.meteors.map((meteor) => meteor.year);
    const meteorsByYear = _.sortBy(meteorYearList);
-   const formatYears = meteorsByYear.map((year) => {return moment(year).format('YYYY');});
-   
+   const formatedYears = meteorsByYear.map((year) => {return parseInt(moment(year).format('YYYY'));});
 
+   const groupYear1stBatch = formatedYears.filter(findFirstBatch);
+   const groupYear2ndBatch = formatedYears.filter(findSecondBatch);
+   const groupYear3rdBatch = formatedYears.filter(findThirdBatch);
+   const groupYear4thBatch = formatedYears.filter(findFourthBatch);
+   const groupYear5thBatch = formatedYears.filter(findFifthBatch);
 
-  //  let { bounceValue } = this.state;
+   const groupedArray = [groupYear1stBatch, groupYear2ndBatch, groupYear3rdBatch, groupYear4thBatch, groupYear5thBatch];
 
    return (
-     <Text style={styles.text}>Hey</Text>
-    //  <View style={styles.bookChart}>
-    //  {this.props.books.sort(function(a,b) {
-    //    let aHeight = a.volumeInfo.ratingsCount ? a.volumeInfo.ratingsCount : 0
-    //    let bHeight = b.volumeInfo.ratingsCount ? b.volumeInfo.ratingsCount : 0
-    //    return bHeight - aHeight
-    //  }).map(function(book, i) {
-    //    let ratingsCountHeight = book.volumeInfo.ratingsCount ? book.volumeInfo.ratingsCount : 2
-    //    if(ratingsCountHeight >= 30) {
-    //      scoreColor = '#1E77E2'
-    //    }
-    //    if(ratingsCountHeight > 20 && ratingsCountHeight < 30) {
-    //      scoreColor = '#6A5'
-    //    }
-    //    if(ratingsCountHeight > 10 && ratingsCountHeight < 20) {
-    //      scoreColor = '#FED024'
-    //    }
-    //    if(ratingsCountHeight > 5 && ratingsCountHeight < 10) {
-    //      scoreColor = '#FA5732'
-    //    }
-    //    if(ratingsCountHeight < 5) {
-    //      scoreColor = '#C21515'
-    //    }
-    //    return (
-    //      <View style={styles.bookChart} key={i}>
-    //       <Animated.View
-    //         style={[{transform: [{scale: bounceValue}], height: ratingsCountHeight,backgroundColor:scoreColor}, styles.bar, styles.barPageCount]}
-    //       />
-    //      </View>
-    //    )}
-    //  )}
-    //  </View>
-  );
+     <View style={styles.yearChart}>
+     {groupedArray.map(function(group, i) {
+       let yearCountHeight = group.length ? group.length : 0;
+       if(group === groupYear1stBatch) {
+         scoreColor = '#1E77E2'
+       }
+       if(group === groupYear2ndBatch) {
+         scoreColor = '#6A5'
+       }
+       if(group === groupYear3rdBatch) {
+         scoreColor = '#FED024'
+       }
+       if(group === groupYear4thBatch) {
+         scoreColor = '#FA5732'
+       }
+       if(group === groupYear5thBatch) {
+         scoreColor = '#C21515'
+       }
+       return (
+         <View style={styles.yearChart} key={i}>
+          <View style={[{height: yearCountHeight,backgroundColor:scoreColor}, styles.bar, styles.barPageCount]} >
+          </View>
+         </View>
+       )}
+      )}
+      </View>
+    )
   }
 }
 
 const styles = StyleSheet.create({
-  bookChart: {
+  yearChart: {
     top: 10,
     height: 100,
     flexDirection: 'row',
