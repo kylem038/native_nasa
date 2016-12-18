@@ -37,7 +37,7 @@ class Visuals extends Component {
         <View
           style={styles.visuals}
         >
-          <Text style={styles.title}>Meteorite Mass in One Year</Text>
+          <Text style={styles.title}>Meteorite Mass</Text>
           <MassChart meteors={this.props.meteors}/>
         </View>
       </Image>
