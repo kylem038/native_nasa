@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import meteorContainer from '../containers/meteorContainer';
+import FellPerYearChart from './FellPerYearChart';
 
 import {
   Alert,
@@ -14,7 +16,7 @@ import {
   View
 } from 'react-native';
 
-export default class Visuals extends Component {
+class Visuals extends Component {
   constructor (props) {
    super(props);
  }
@@ -23,16 +25,14 @@ export default class Visuals extends Component {
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
         <Text style={styles.text}>Visuals</Text>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.pop()}
-        >
-          <Text style={styles.buttonText}>Back</Text>
-        </TouchableHighlight>
+        <Text style={styles.text}>Meteors Per Year</Text>
+        <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
       </Image>
     )
   }
 }
+
+export default meteorContainer(Visuals);
 
 const styles = StyleSheet.create({
   container: {
@@ -48,22 +48,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     top: 20,
   },
-  button: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderColor: '#1E77E2',
-    borderWidth: 2,
-    margin: 10,
-    shadowColor: '#1b71E2',
-    shadowRadius: 10,
-    borderRadius: 5,
-    top: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+  chart: {
+    backgroundColor: 'white',
   },
-  buttonText: {
-    color: 'red',
-    fontSize: 25,
-  }
+
 });
