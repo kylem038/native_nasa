@@ -13,7 +13,7 @@ import {
   View
 } from 'react-native';
 
-const _ = require('underscore');
+
 
 import userContainer from '../containers/userContainer';
 import meteorContainer from '../containers/meteorContainer';
@@ -83,8 +83,6 @@ class Search extends Component{
     .then((response) => response.json())
     .then((responseJSON) => {
       getMeteors(responseJSON);
-      const meteorYearList = responseJSON.map((meteor) => meteor.year);
-      const meteorsByYear = _.sortBy(meteorYearList);
 
       const meteorNumber = responseJSON.length;
       // Alert.alert(

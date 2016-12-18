@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import meteorContainer from '../containers/meteorContainer';
+import FellPerYearChart from './FellPerYearChart';
 
 import {
   Alert,
@@ -14,7 +16,7 @@ import {
   View
 } from 'react-native';
 
-export default class Visuals extends Component {
+class Visuals extends Component {
   constructor (props) {
    super(props);
  }
@@ -22,17 +24,13 @@ export default class Visuals extends Component {
  render() {
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
-        <Text style={styles.text}>Visuals</Text>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.pop()}
-        >
-          <Text style={styles.buttonText}>Back</Text>
-        </TouchableHighlight>
+        <FellPerYearChart meteors={this.props.meteors}/>
       </Image>
     )
   }
 }
+
+export default meteorContainer(Visuals);
 
 const styles = StyleSheet.create({
   container: {
