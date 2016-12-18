@@ -14,12 +14,17 @@ import {
   View
 } from 'react-native';
 
-export default class Visuals extends Component {
+import MassChart from './MassChart';
+import meteorContainer from '../containers/meteorContainer';
+
+class Visuals extends Component {
   constructor (props) {
    super(props);
  }
 
  render() {
+   const { meteors } = this.props;
+
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
         <Text style={styles.text}>Visuals</Text>
@@ -29,10 +34,19 @@ export default class Visuals extends Component {
         >
           <Text style={styles.buttonText}>Back</Text>
         </TouchableHighlight>
+        <View
+          style={styles.visuals}
+        >
+          <Text style={styles.title}>Meteorite Mass in One Year</Text>
+          <MassChart meteors={this.props.meteors}/>
+        </View>
       </Image>
     )
   }
 }
+
+export default meteorContainer(Visuals);
+
 
 const styles = StyleSheet.create({
   container: {
@@ -65,5 +79,11 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'red',
     fontSize: 25,
+  },
+  visuals: {
+    top: 50,
+  },
+  title: {
+    color: 'white',
   }
 });
