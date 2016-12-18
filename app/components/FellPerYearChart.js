@@ -19,31 +19,31 @@ export default class FellPerYearChart extends Component{
    };
   }
 
- // componentDidMount() {
- //   requestAnimationFrame(() => {
- //  			this._animateIn();
- //    });
- //  }
+ componentDidMount() {
+   requestAnimationFrame(() => {
+  			this._animateIn();
+    });
+  }
 
-  // _animateIn = () => {
-  //   Animated.spring(
-  //     this.state.bounceValue,
-  //     {
-  //       toValue: 1,
-  //       friction: 1,
-  //     }
-  //   ).start(this._animateOut);
-  // }
+  _animateIn = () => {
+    Animated.spring(
+      this.state.bounceValue,
+      {
+        toValue: 1,
+        friction: 1,
+      }
+    ).start(this._animateOut);
+  }
 
-  // _animateOut = () => {
-  //   Animated.spring(
-  //     this.state.bounceValue,
-  //     {
-  //       toValue: 0.8,
-  //       friction: 1,
-  //     }
-  //   ).start(this._animateIn);
-  // };
+  _animateOut = () => {
+    Animated.spring(
+      this.state.bounceValue,
+      {
+        toValue: 0.8,
+        friction: 1,
+      }
+    ).start(this._animateIn);
+  };
 
  render() {
    function findFirstBatch(year) {
@@ -96,8 +96,7 @@ export default class FellPerYearChart extends Component{
        }
        return (
          <View style={styles.yearChart} key={i}>
-          <View style={[{height: yearCountHeight,backgroundColor:scoreColor}, styles.bar, styles.barPageCount]} >
-          </View>
+          <Animated.View style={[{transform: [{scale: bounceValue}], height: yearCountHeight,backgroundColor:scoreColor}, styles.bar, styles.barPageCount]} />
          </View>
        )}
       )}
