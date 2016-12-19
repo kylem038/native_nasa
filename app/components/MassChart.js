@@ -140,7 +140,8 @@ export default class MassChart extends Component {
             }
             return (
               <View style={styles.yearChart} key={i}>
-                <Animated.View style={[{transform: [{scale: bounceValue}], height: massHeight,backgroundColor:scoreColor}, styles.bar, styles.barPageCount]} />
+                <Animated.View style={[{transform: [{scale: bounceValue}], height: (massHeight / 2), width: (massHeight / 2), backgroundColor: scoreColor}, styles.circle]} />
+                <Text style={styles.label}>Label</Text>
               </View>
             )}
           )}
@@ -152,20 +153,16 @@ export default class MassChart extends Component {
 
 const styles = StyleSheet.create({
   massChart: {
-    top: 5,
-    height: 450,
+    top: 20,
+    height: 275,
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'center',
-    margin: 1,
   },
-  bar: {
-    width: 20,
-    borderBottomLeftRadius: 10,
-    borderBottomRightRadius: 10,
-    borderTopRightRadius: 10,
-    marginLeft: 2,
+  circle: {
+    borderRadius: 100,
   },
-  barPageCount: {
+  label: {
+    color: 'white',
   }
 });
