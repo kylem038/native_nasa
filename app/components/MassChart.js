@@ -52,6 +52,53 @@ export default class MassChart extends Component {
     let meteors = this.props.meteors.toJS();
     const meteorMassList = meteors.map((meteor) => parseInt(meteor.mass));
 
+    allMeteors = {
+      "AGroup": {
+        label: "less than 100g",
+        meteors: []
+      },
+      "BGroup": {
+        label: "100-1,000g",
+        meteors: []
+      },
+      "CGroup": {
+        label: "1,000-10,000g",
+        meteors: []
+      },
+      "DGroup": {
+        label: "10,000-25,000g",
+        meteors: []
+      },
+      "EGroup": {
+        label: "25,000-50,000g",
+        meteors: []
+      },
+      "FGroup": {
+        label: "50,000-100,000g",
+        meteors: []
+      },
+      "GGroup": {
+        label: "100,000-250,000g",
+        meteors: []
+      },
+      "HGroup": {
+        label: "250,000-500,000g",
+        meteors: []
+      },
+      "IGroup": {
+        label: "500,000-750,000g",
+        meteors: []
+      },
+      "JGroup": {
+        label: "750,000-1,000,000g",
+        meteors: []
+      },
+      "KGroup": {
+        label: "1,000,000g or more",
+        meteors: []
+      },
+    };
+
     function findAgroup(mass) {
       if(mass <= 100) { return mass; }
     }
