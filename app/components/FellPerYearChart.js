@@ -64,7 +64,8 @@ export default class FellPerYearChart extends Component{
     }
 
     let { bounceValue } = this.state;
-    const meteorYearList = this.props.meteors.map((meteor) => meteor.year);
+    let meteors = this.props.meteors.toJS();
+    const meteorYearList = meteors.map((meteor) => meteor.year);
     const meteorsByYear = _.sortBy(meteorYearList);
     const formatedYears = meteorsByYear.map((year) => {
       return parseInt(moment(year).format('YYYY'));

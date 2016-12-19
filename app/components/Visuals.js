@@ -27,12 +27,8 @@ class Visuals extends Component {
 
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
+        <ScrollView>
         <Text style={styles.text}>Visuals</Text>
-        <ScrollView style={styles.visualsContainer}>
-          <View>
-            <Text style={styles.title}>Meteorite Mass</Text>
-            <MassChart meteors={this.props.meteors}/>
-          </View>
           <View>
             <Text style={styles.title}>Meteors Per Year</Text>
             <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
