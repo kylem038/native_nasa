@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -28,7 +30,8 @@ class Search extends Component {
   }
 
   render() {
-    const { user, meteors } = this.props;
+    const meteors = this.props.meteors.toJS();
+    const { user } = this.props;
     if(user) {
       return (
         <Image source={require('../assets/space-bkgd.png')}
