@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
     margin: 1,
   },
   bar: {
-    width: 20,
+    width: 30,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
