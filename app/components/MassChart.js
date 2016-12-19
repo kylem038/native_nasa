@@ -59,21 +59,30 @@ export default class MassChart extends Component {
       if(mass > 100 && mass <= 1000) { return mass; }
     }
     function findCgroup(mass) {
-      if(mass > 1000 && mass <= 100000) { return mass; }
+      if(mass > 1000 && mass <= 10000) { return mass; }
     }
     function findDgroup(mass) {
-      if(mass > 100000 && mass <= 250000) { return mass; }
+      if(mass > 10000 && mass <= 25000) { return mass; }
     }
     function findEgroup(mass) {
-      if(mass > 250000 && mass <= 500000) { return mass; }
+      if(mass > 25000 && mass <= 50000) { return mass; }
     }
     function findFgroup(mass) {
-      if(mass > 500000 && mass <= 750000) { return mass; }
+      if(mass > 50000 && mass <= 100000) { return mass; }
     }
     function findGgroup(mass) {
-      if(mass > 750000 && mass <= 1000000) { return mass; }
+      if(mass > 100000 && mass <= 250000) { return mass; }
     }
     function findHgroup(mass) {
+      if(mass > 250000 && mass <= 500000) { return mass; }
+    }
+    function findIgroup(mass) {
+      if(mass > 500000 && mass <= 750000) { return mass; }
+    }
+    function findJgroup(mass) {
+      if(mass > 750000 && mass <= 1000000) { return mass; }
+    }
+    function findKgroup(mass) {
       if(mass > 1000000) { return mass; }
     }
 
@@ -85,14 +94,26 @@ export default class MassChart extends Component {
     const massListF = meteorMassList.filter(findFgroup);
     const massListG = meteorMassList.filter(findGgroup);
     const massListH = meteorMassList.filter(findHgroup);
+    const massListI = meteorMassList.filter(findIgroup);
+    const massListJ = meteorMassList.filter(findJgroup);
+    const massListK = meteorMassList.filter(findKgroup);
 
-    const massGroup = [massListA, massListB, massListC, massListD, massListE, massListF, massListG, massListH];
+    const massGroup = [massListA, massListB, massListC, massListD, massListE, massListF, massListG, massListH, massListI, massListJ, massListK];
 
     return(
       <ScrollView horizontal={true}>
         <View style={styles.massChart}>
           {massGroup.map(function(group, i) {
             let massHeight = group.length ? group.length : 2;
+            if(group === massListK) {
+              scoreColor = '#00ffd9'
+            }
+            if(group === massListJ) {
+              scoreColor = '#660b62'
+            }
+            if(group === massListI) {
+              scoreColor = '#0b3466'
+            }
             if(group === massListH) {
               scoreColor = '#1E77E2'
             }
@@ -132,7 +153,7 @@ export default class MassChart extends Component {
 const styles = StyleSheet.create({
   massChart: {
     top: 5,
-    height: 500,
+    height: 450,
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'center',
