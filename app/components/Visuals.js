@@ -27,9 +27,13 @@ class Visuals extends Component {
 
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
-        <ScrollView>
         <Text style={styles.text}>Visuals</Text>
-          <View style={styles.fellPerYear}>
+        <ScrollView style={styles.visualsContainer}>
+          <View>
+            <Text style={styles.title}>Meteorite Mass</Text>
+            <MassChart meteors={this.props.meteors}/>
+          </View>
+          <View style={styles.perYear}>
             <Text style={styles.title}>Meteors Per Year</Text>
             <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
           </View>
@@ -57,13 +61,14 @@ const styles = StyleSheet.create({
   },
   visualsContainer: {
     top: 80,
+    height: 500,
+  },
+  perYear: {
+    height: 500,
   },
   title: {
     color: 'white',
     fontSize: 25,
     textAlign: 'center',
   },
-  fellPerYear: {
-    top: 70,
-  }
 });
