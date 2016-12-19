@@ -65,27 +65,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     top: 70,
   },
-  // button: {
-  //   height: 50,
-  //   alignSelf: 'stretch',
-  //   backgroundColor: '#fff',
-  //   borderColor: '#1E77E2',
-  //   borderWidth: 2,
-  //   margin: 10,
-  //   shadowColor: '#1b71E2',
-  //   shadowRadius: 10,
-  //   borderRadius: 5,
-  //   top: 30,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // buttonText: {
-  //   color: 'red',
-  //   fontSize: 25,
-  // },
-  // chart: {
-  //   backgroundColor: 'white',
-  // },
   visualsContainer: {
     top: 80,
   },

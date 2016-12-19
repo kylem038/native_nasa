@@ -29,7 +29,6 @@ class Search extends Component {
 
   render() {
     const { user, meteors } = this.props;
-
     if(user) {
       return (
         <Image source={require('../assets/space-bkgd.png')}
@@ -40,19 +39,19 @@ class Search extends Component {
           >
             <Text style={styles.buttonText}>Search for Meteors</Text>
           </TouchableHighlight>
-          {spinner = this.state.isLoading ?
+          {/* {spinner = this.state.isLoading ?
             (<ActivityIndicator
                 style={styles.spinner}
                 size='large'
                 color='red'
-            /> ) :
+            /> ) : */}
             <ScrollView
               style={styles.scrollView}>
               {meteors.map(function(meteor, i) {
                 return <Row key={i} meteor={meteor} />}
               )}
             </ScrollView>
-          }
+          {/* } */}
         </Image>
       )
     }

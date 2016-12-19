@@ -87,6 +87,5 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: '300',
     top: 250,
-    // fontFamily: 'Nasalization',
   }
 });

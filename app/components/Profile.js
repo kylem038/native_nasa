@@ -35,24 +35,6 @@ class Profile extends Component {
         <Text style={styles.name}>Hello</Text>
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.email}>{user.email}</Text>
-        {/* <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.push({
-            component: Search,
-            title: "Search"
-          })}
-        >
-          <Text style={styles.buttonText}>Go To Search</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.push({
-            component: Login,
-            title: "Login"
-          })}
-        >
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableHighlight> */}
       </View>);
     } else {
       return null;
@@ -92,22 +74,4 @@ const styles = StyleSheet.create({
     fontWeight: '100',
     top: 50,
   },
-  // button: {
-  //   height: 50,
-  //   alignSelf: 'stretch',
-  //   backgroundColor: '#fff',
-  //   borderColor: 'red',
-  //   borderWidth: 2,
-  //   margin: 10,
-  //   shadowColor: '#1b71E2',
-  //   shadowRadius: 10,
-  //   borderRadius: 5,
-  //   top: 20,
-  //   justifyContent: 'center',
-  //   alignItems: 'center',
-  // },
-  // buttonText: {
-  //   color: 'red',
-  //   fontSize: 25,
-  // }
 })
