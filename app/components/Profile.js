@@ -35,24 +35,6 @@ class Profile extends Component {
         <Text style={styles.name}>Hello</Text>
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.email}>{user.email}</Text>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.push({
-            component: Search,
-            title: "Search"
-          })}
-        >
-          <Text style={styles.buttonText}>Go To Search</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.push({
-            component: Login,
-            title: "Login"
-          })}
-        >
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableHighlight>
       </View>);
     } else {
       return null;
@@ -69,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1E77E2',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    paddingTop: 50,
+    paddingTop: 60,
   },
   picture: {
     height: 200,
@@ -78,34 +60,18 @@ const styles = StyleSheet.create({
     borderColor: 'red',
     borderWidth: 2,
     margin: 10,
+    top: 20,
   },
   name: {
     fontSize: 35,
     margin: 5,
     fontWeight: '500',
     color: 'white',
+    top: 40,
   },
   email: {
     fontSize: 18,
-    // margin: 20,
     fontWeight: '100',
+    top: 50,
   },
-  button: {
-    height: 50,
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    borderColor: 'red',
-    borderWidth: 2,
-    margin: 10,
-    shadowColor: '#1b71E2',
-    shadowRadius: 10,
-    borderRadius: 5,
-    top: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: 'red',
-    fontSize: 25,
-  }
 })
