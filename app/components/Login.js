@@ -21,13 +21,13 @@ class Login extends Component {
   render() {
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
-        <Text style={styles.text}>Native NASA</Text>
         <TouchableHighlight
           style={styles.signInButton}
           onPress={this._onLogin.bind(this)}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableHighlight>
+        <Text style={styles.text}>Native NASA</Text>
       </Image>
     )
   }
@@ -63,13 +63,6 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
   },
-  text: {
-    color: 'red',
-    fontSize: 35,
-    fontWeight: '300',
-    top: 60,
-    // fontFamily: 'Nasalization',
-  },
   signInButton: {
     height: 100,
     width: 100,
@@ -88,5 +81,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'red',
     fontSize: 25,
+  },
+  text: {
+    color: 'red',
+    fontSize: 35,
+    fontWeight: '300',
+    top: 250,
+    // fontFamily: 'Nasalization',
   }
 });

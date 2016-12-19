@@ -16,7 +16,7 @@ import {
 
 const moment = require('moment');
 
-export default class Row extends Component{
+export default class Row extends Component {
   constructor (props) {
    super(props);
    this.state = {
