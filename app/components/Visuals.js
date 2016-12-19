@@ -37,7 +37,6 @@ class Visuals extends Component {
             <Text style={styles.title}>Meteors Per Year</Text>
             <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
           </View>
-
         </ScrollView>
       </Image>
     )
@@ -71,5 +70,5 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 25,
     textAlign: 'center',
-  }
+  },
 });
