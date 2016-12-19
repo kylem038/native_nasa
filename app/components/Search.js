@@ -30,9 +30,8 @@ class Search extends Component {
   }
 
   render() {
-    const meteors = this.props.meteors.meteors.toJS();
+    const meteors = this.props.meteors.toJS();
     const { user } = this.props;
-    console.log(meteors);
     if(user) {
       return (
         <Image source={require('../assets/space-bkgd.png')}
@@ -51,9 +50,9 @@ class Search extends Component {
             /> ) : */}
             <ScrollView
               style={styles.scrollView}>
-              {/* {meteors.map(function(meteor, i) {
+              {meteors.map(function(meteor, i) {
                 return <Row key={i} meteor={meteor} />}
-              )} */}
+              )}
             </ScrollView>
           {/* } */}
         </Image>
