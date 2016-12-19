@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
+  ActivityIndicator,
   Animated,
   Alert,
   Image,
   ScrollView,
   StyleSheet,
-  Switch,
   Text,
-  TextInput,
   TouchableHighlight,
   View
 } from 'react-native';
-
-
 
 import userContainer from '../containers/userContainer';
 import meteorContainer from '../containers/meteorContainer';
@@ -21,55 +18,44 @@ import Profile from './Profile';
 import Visuals from './Visuals';
 import Row from './Row';
 
-class Search extends Component{
+class Search extends Component {
   constructor (props) {
-   super(props);
-   this.state = {
-     searchTerm: null,
-   };
- }
+    super(props);
+    this.state = {
+      searchTerm: null,
+      isLoading: false,
+    };
+  }
 
- render() {
-   const { user, meteors } = this.props;
-   if(user) {
-     return (
-       <Image source={require('../assets/space-bkgd.png')}
+  render() {
+    const { user, meteors } = this.props;
+    if(user) {
+      return (
+        <Image source={require('../assets/space-bkgd.png')}
           style={styles.container}>
-        <Text style={styles.text}>Search Page</Text>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.push({
-            component: Profile,
-            title: "Profile"
-          })}
-        >
-          <Text style={styles.buttonText}>Profile</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.push({
-            component: Visuals,
-            title: "Visuals"
-          })}
-        >
-          <Text style={styles.buttonText}>Go To Visualization</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          style={styles.button}
-          onPress={this._onCallApi.bind(this)}
-        >
-          <Text style={styles.buttonText}>Search</Text>
-        </TouchableHighlight>
-        <ScrollView
-          style={styles.scrollView}>
-          {meteors.map(function(meteor, i) {
-            return <Row key={i} meteor={meteor} />}
-          )}
-        </ScrollView>
-      </Image>
-     )
-   }
-   return (null)
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this._onCallApi.bind(this)}
+          >
+            <Text style={styles.buttonText}>Search for Meteors</Text>
+          </TouchableHighlight>
+          {/* {spinner = this.state.isLoading ?
+            (<ActivityIndicator
+                style={styles.spinner}
+                size='large'
+                color='red'
+            /> ) : */}
+            <ScrollView
+              style={styles.scrollView}>
+              {meteors.map(function(meteor, i) {
+                return <Row key={i} meteor={meteor} />}
+              )}
+            </ScrollView>
+          {/* } */}
+        </Image>
+      )
+    }
+    return (null)
   }
 
   _onCallApi() {
@@ -83,15 +69,6 @@ class Search extends Component{
     .then((response) => response.json())
     .then((responseJSON) => {
       getMeteors(responseJSON);
-
-      const meteorNumber = responseJSON.length;
-      // Alert.alert(
-      //   'Success!',
-      //   `We found ${meteorNumber} meteors!`,
-      //   [
-      //     {text: 'OK'},
-      //   ]
-      // )
     })
     .catch((error) => {
       getMeteors([]);
@@ -102,6 +79,7 @@ class Search extends Component{
         ]
       )
     });
+    this.setState({ isLoading: true });
   }
 }
 
@@ -121,7 +99,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 35,
     fontWeight: '300',
-    top: 20,
+    top: 70,
   },
   button: {
     height: 50,
@@ -133,7 +111,7 @@ const styles = StyleSheet.create({
     shadowColor: '#1b71E2',
     shadowRadius: 10,
     borderRadius: 5,
-    top: 30,
+    top: 80,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -141,8 +119,11 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 25,
   },
+  spinner: {
+    top: 150,
+  },
   scrollView: {
-    top: 30,
+    top: 90,
     backgroundColor: '#1E77E2',
     height: 800,
   },
