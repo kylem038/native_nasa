@@ -1,3 +1,5 @@
+import Immutable from 'immutable';
+
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -28,7 +30,9 @@ class Search extends Component {
   }
 
   render() {
-    const { user, meteors } = this.props;
+    const meteors = this.props.meteors.meteors.toJS();
+    const { user } = this.props;
+    console.log(meteors);
     if(user) {
       return (
         <Image source={require('../assets/space-bkgd.png')}
@@ -47,9 +51,9 @@ class Search extends Component {
             /> ) : */}
             <ScrollView
               style={styles.scrollView}>
-              {meteors.map(function(meteor, i) {
+              {/* {meteors.map(function(meteor, i) {
                 return <Row key={i} meteor={meteor} />}
-              )}
+              )} */}
             </ScrollView>
           {/* } */}
         </Image>
