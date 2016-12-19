@@ -28,12 +28,6 @@ class Visuals extends Component {
     return (
       <Image source={require('../assets/space-bkgd.png')} style={styles.container}>
         <Text style={styles.text}>Visuals</Text>
-        {/* <TouchableHighlight
-          style={styles.button}
-          onPress={() => this.props.navigator.pop()}
-        >
-          <Text style={styles.buttonText}>Back</Text>
-        </TouchableHighlight> */}
         <ScrollView style={styles.visualsContainer}>
           <View>
             <Text style={styles.title}>Meteorite Mass</Text>
