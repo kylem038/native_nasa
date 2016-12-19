@@ -28,7 +28,7 @@ export default class App extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={routes[0]}
+        initialRoute={routes[2]}
         initialRouteStack={routes}
         renderScene={(route, navigator) => {
           let RouteComponent = route.component;
@@ -59,6 +59,10 @@ let NavigationBarRouteMapper = {
     else { return null }
   },
 
+  Title(route, navigator, index, navState) {
+    return <Text style={ styles.navTitle }>Native NASA</Text>
+  },
+
   RightButton(route, navigator, index, navState) {
     if(index > 0) {
       return (
@@ -68,10 +72,6 @@ let NavigationBarRouteMapper = {
       )
     }
     else { return null }
-  },
-
-  Title(route, navigator, index, navState) {
-    return <Text style={ styles.navTitle }>Native NASA</Text>
   }
 };
 
@@ -80,18 +80,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   navTitle: {
-    marginTop:4,
-    fontSize:16,
+    marginTop: 4,
+    fontSize: 16,
   },
   prevButton: {
     fontSize: 16,
-    marginLeft:15,
-    marginTop:2,
+    marginLeft: 15,
+    marginTop: 2,
   },
   nextButton: {
     fontSize: 16,
-    marginRight:15,
-    marginTop:2,
+    marginRight: 15,
+    marginTop: 2,
   },
   nav: {
     height: 50,

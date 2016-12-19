@@ -85,12 +85,12 @@ const styles = StyleSheet.create({
     margin: 5,
     fontWeight: '500',
     color: 'white',
-    top: 20,
+    top: 40,
   },
   email: {
     fontSize: 18,
     fontWeight: '100',
-    top: 30,
+    top: 50,
   },
   // button: {
   //   height: 50,
