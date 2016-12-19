@@ -46,21 +46,21 @@ export default class FellPerYearChart extends Component{
   };
 
  render() {
-   function findFirstBatch(year) {
-     if(year <= 1850) { return year; }
-   }
-   function findSecondBatch(year) {
-     if(year > 1850 && year <= 1900) { return year; }
-   }
-   function findThirdBatch(year) {
-     if(year > 1900 && year <= 1950) { return year; }
-   }
-   function findFourthBatch(year) {
-     if(year > 1950 && year <= 2000) { return year; }
-   }
-   function findFifthBatch(year) {
-     if(year > 2000) { return year; }
-   }
+  function findFirstBatch(year) {
+   if(year <= 1850) { return year; }
+  }
+  function findSecondBatch(year) {
+   if(year > 1850 && year <= 1900) { return year; }
+  }
+  function findThirdBatch(year) {
+   if(year > 1900 && year <= 1950) { return year; }
+  }
+  function findFourthBatch(year) {
+   if(year > 1950 && year <= 2000) { return year; }
+  }
+  function findFifthBatch(year) {
+   if(year > 2000) { return year; }
+}
 
    let { bounceValue } = this.state;
    const meteorYearList = this.props.meteors.map((meteor) => meteor.year);
