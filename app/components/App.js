@@ -64,14 +64,24 @@ let NavigationBarRouteMapper = {
   },
 
   RightButton(route, navigator, index, navState) {
-    if(index > 0) {
+    if (index === 3) {
+      return (
+        <TouchableHighlight onPress={() => navigator.push({
+          component: Profile,
+          title: 'Profile',
+        })}>
+          <Text style={styles.nextButton}>Profile</Text>
+        </TouchableHighlight>
+      )
+    } else if (index > 0) {
       return (
         <TouchableHighlight onPress={() => navigator.push(routes[index + 1])}>
           <Text style={styles.nextButton}>Next</Text>
         </TouchableHighlight>
       )
+    } else {
+      return null;
     }
-    else { return null }
   }
 };
 
