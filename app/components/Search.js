@@ -25,7 +25,6 @@ class Search extends Component {
     super(props);
     this.state = {
       searchTerm: null,
-      isLoading: false,
     };
   }
 
@@ -42,19 +41,12 @@ class Search extends Component {
           >
             <Text style={styles.buttonText}>Search for Meteors</Text>
           </TouchableHighlight>
-          {spinner = this.state.isLoading ?
-            (<ActivityIndicator
-                style={styles.spinner}
-                size='large'
-                color='red'
-            /> ) :
             <ScrollView
               style={styles.scrollView}>
               {meteors.map(function(meteor, i) {
                 return <Row key={i} meteor={meteor} />}
               )}
             </ScrollView>
-          }
         </Image>
       )
     }
@@ -83,7 +75,6 @@ class Search extends Component {
         ]
       )
     });
-    // this.setState({ isLoading: true });
   }
 }
 

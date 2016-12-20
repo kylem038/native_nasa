@@ -49,7 +49,6 @@ export default class MassChart extends Component {
   render() {
     let { bounceValue } = this.state;
     let { meteorGrouping } = this.props;
-    console.log('meteorGrouping', meteorGrouping);
 
     let meteorCircles = [];
     Object.values(meteorGrouping).forEach((sizeGroup, i) => {
@@ -71,13 +70,6 @@ export default class MassChart extends Component {
     );
   }
 }
-
-// Object.values(this.props.meteorGrouping).forEach((sizeGroup) => {
-//             let massHeight = sizeGroup.meteors.length ? sizeGroup.meteors.length : 2;
-//             console.log('sizeGroup.meteors.length', sizeGroup.meteors.length)
-//             console.log('massHeight', massHeight)
-//             console.log('label', sizeGroup.label)
-// })
 
 const styles = StyleSheet.create({
   massChart: {
