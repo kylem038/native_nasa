@@ -48,26 +48,36 @@ export default class MassChart extends Component {
 
   render() {
     let { bounceValue } = this.state;
-    let meteorGrouping = this.props;
+    let { meteorGrouping } = this.props;
     console.log('meteorGrouping', meteorGrouping);
+
+    let meteorCircles = [];
+    Object.values(meteorGrouping).forEach((sizeGroup, i) => {
+      let massHeight = sizeGroup.meteors.length ? sizeGroup.meteors.length : 2;
+      meteorCircles.push(
+          <View key={i}>
+            <Animated.View style={[{transform: [{scale: bounceValue}], height: (massHeight / 2), width: (massHeight / 2), backgroundColor: sizeGroup.scoreColor}, styles.circle]} />
+            <Text style={styles.label}>{sizeGroup.label}</Text>
+          </View>
+      )
+    })
+
     return(
       <ScrollView horizontal={true}>
         <View style={styles.massChart}>
-          {Object.keys(meteorGrouping).map(function(group, i) {
-            let massHeight = group.length ? group.length : 2;
-
-            return (
-              <View style={styles.yearChart} key={i}>
-                <Animated.View style={[{transform: [{scale: bounceValue}], height: (massHeight / 2), width: (massHeight / 2), backgroundColor: meteorGrouping.meteors.scoreColor}, styles.circle]} />
-                <Text style={styles.label}>{meteorGrouping.meteors.label}</Text>
-              </View>
-            )}
-          )}
+          {meteorCircles}
         </View>
       </ScrollView>
     );
   }
 }
+
+// Object.values(this.props.meteorGrouping).forEach((sizeGroup) => {
+//             let massHeight = sizeGroup.meteors.length ? sizeGroup.meteors.length : 2;
+//             console.log('sizeGroup.meteors.length', sizeGroup.meteors.length)
+//             console.log('massHeight', massHeight)
+//             console.log('label', sizeGroup.label)
+// })
 
 const styles = StyleSheet.create({
   massChart: {

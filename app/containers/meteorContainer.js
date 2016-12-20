@@ -44,18 +44,8 @@ const mapStateToProps = (state) => {
       meteors: []
     },
     "IGroup": {
-      label: "500,000-750,000g",
-      scoreColor: '#0b3466',
-      meteors: []
-    },
-    "JGroup": {
-      label: "750,000-1,000,000g",
-      scoreColor: '#660b62',
-      meteors: []
-    },
-    "KGroup": {
-      label: "1,000,000g or more",
-      scoreColor: '#00ffd9',
+      label: "500,000-1Mg",
+      scoreColor: '#f14949',
       meteors: []
     }
   };
@@ -92,14 +82,8 @@ const mapStateToProps = (state) => {
     if(mass > 250000 && mass <= 500000) {
       return allMeteors.HGroup.meteors.push(mass);
     }
-    if(mass > 500000 && mass <= 750000) {
+    if(mass > 500000) {
       return allMeteors.IGroup.meteors.push(mass);
-    }
-    if(mass > 750000 && mass <= 1000000) {
-      return allMeteors.JGroup.meteors.push(mass);
-    }
-    if(mass > 1000000) {
-      return allMeteors.KGroup.meteors.push(mass);
     }
   }
 
