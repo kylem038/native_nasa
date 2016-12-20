@@ -42,19 +42,19 @@ class Search extends Component {
           >
             <Text style={styles.buttonText}>Search for Meteors</Text>
           </TouchableHighlight>
-          {/* {spinner = this.state.isLoading ?
+          {spinner = this.state.isLoading ?
             (<ActivityIndicator
                 style={styles.spinner}
                 size='large'
                 color='red'
-            /> ) : */}
+            /> ) :
             <ScrollView
               style={styles.scrollView}>
               {meteors.map(function(meteor, i) {
                 return <Row key={i} meteor={meteor} />}
               )}
             </ScrollView>
-          {/* } */}
+          }
         </Image>
       )
     }
@@ -66,6 +66,7 @@ class Search extends Component {
     const { getMeteors } = this.props;
 
     let API_ENDPOINT = `https://data.nasa.gov/resource/y77d-th95.json`;
+
     fetch(API_ENDPOINT, {
       method: "GET"
     })
@@ -82,7 +83,7 @@ class Search extends Component {
         ]
       )
     });
-    this.setState({ isLoading: true });
+    // this.setState({ isLoading: true });
   }
 }
 
@@ -92,11 +93,11 @@ export default meteorContainer(
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center',
-    width: null,
     height: null,
+    width: null,
   },
   text: {
     color: 'white',
@@ -105,18 +106,16 @@ const styles = StyleSheet.create({
     top: 70,
   },
   button: {
-    height: 50,
+    alignItems: 'center',
     alignSelf: 'stretch',
     backgroundColor: '#fff',
     borderColor: '#1E77E2',
-    borderWidth: 2,
-    margin: 10,
-    shadowColor: '#1b71E2',
-    shadowRadius: 10,
     borderRadius: 5,
-    top: 80,
+    borderWidth: 2,
+    height: 50,
     justifyContent: 'center',
-    alignItems: 'center',
+    margin: 10,
+    top: 80,
   },
   buttonText: {
     color: 'red',
@@ -126,8 +125,8 @@ const styles = StyleSheet.create({
     top: 150,
   },
   scrollView: {
-    top: 90,
     backgroundColor: '#1E77E2',
     height: 800,
+    top: 90,
   },
 });

@@ -54,7 +54,6 @@ export default class MassChart extends Component {
       <ScrollView horizontal={true}>
         <View style={styles.massChart}>
           {Object.keys(meteorGrouping).map(function(group, i) {
-            debugger
             let massHeight = group.length ? group.length : 2;
 
             return (
@@ -72,11 +71,11 @@ export default class MassChart extends Component {
 
 const styles = StyleSheet.create({
   massChart: {
-    top: 20,
     height: 275,
-    flexDirection: 'row',
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
+    top: 20,
   },
   circle: {
     borderRadius: 100,

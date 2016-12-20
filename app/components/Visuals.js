@@ -48,11 +48,11 @@ export default meteorContainer(Visuals);
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
     flex: 1,
     flexDirection: 'column',
-    alignItems: 'center',
-    width: null,
     height: null,
+    width: null,
   },
   text: {
     color: 'white',
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
     top: 70,
   },
   visualsContainer: {
-    top: 80,
     height: 500,
+    top: 80,
   },
   perYear: {
     height: 500,
@@ -74,5 +74,6 @@ const styles = StyleSheet.create({
   },
   yearsText: {
     color: 'white',
+    margin: 5,
   }
 });
