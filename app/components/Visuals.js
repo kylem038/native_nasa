@@ -35,8 +35,7 @@ class Visuals extends Component {
           </View>
           <View style={styles.perYear}>
             <Text style={styles.title}>Meteors Per Year</Text>
-            <Text style={styles.yearsText}>  1700s         1800s          1900s         2000s</Text>
-            <FellPerYearChart style={styles.chart} meteors={this.props.meteors}/>
+            <FellPerYearChart meteors={this.props.meteors} meteorYearGrouping={this.props.meteorYearGrouping}/>
           </View>
         </ScrollView>
       </Image>
