@@ -46,27 +46,28 @@ export default userContainer(Profile);
 
 const styles = StyleSheet.create({
   container: {
+    alignItems: 'center',
+    backgroundColor: '#1E77E2',
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#1E77E2',
     justifyContent: 'flex-start',
-    alignItems: 'center',
     paddingTop: 60,
   },
   picture: {
+    borderColor: 'red',
+    borderRadius: 100,
+    borderWidth: 2,
     height: 200,
     width: 200,
-    borderRadius: 100,
-    borderColor: 'red',
-    borderWidth: 2,
     margin: 10,
     top: 20,
   },
   name: {
+    color: 'white',
+    fontFamily: 'American Typewriter',
+    fontWeight: 'bold',
     fontSize: 35,
     margin: 5,
-    fontWeight: '500',
-    color: 'white',
     top: 40,
   },
   email: {

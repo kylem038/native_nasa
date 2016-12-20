@@ -52,7 +52,7 @@ let NavigationBarRouteMapper = {
     if(index > 0) {
       return (
         <TouchableHighlight onPress={() => navigator.pop()}>
-          <Text style={styles.prevButton}>Prev</Text>
+          <Text style={styles.prevButton}>« Prev</Text>
         </TouchableHighlight>
       )
     }
@@ -60,7 +60,7 @@ let NavigationBarRouteMapper = {
   },
 
   Title(route, navigator, index, navState) {
-    return <Text style={ styles.navTitle }>Native NASA</Text>
+    return <Text style={styles.navTitle}>Native NASA</Text>
   },
 
   RightButton(route, navigator, index, navState) {
@@ -70,13 +70,22 @@ let NavigationBarRouteMapper = {
           component: Profile,
           title: 'Profile',
         })}>
-          <Text style={styles.nextButton}>Profile</Text>
+          <Text style={styles.nextButton}>Profile »</Text>
+        </TouchableHighlight>
+      )
+    } else if (index === 2) {
+      return (
+        <TouchableHighlight onPress={() => navigator.push({
+          component: Visuals,
+          title: 'Visuals',
+        })}>
+          <Text style={styles.nextButton}>Visuals »</Text>
         </TouchableHighlight>
       )
     } else if (index > 0) {
       return (
         <TouchableHighlight onPress={() => navigator.push(routes[index + 1])}>
-          <Text style={styles.nextButton}>Next</Text>
+          <Text style={styles.nextButton}>Next »</Text>
         </TouchableHighlight>
       )
     } else {
@@ -90,8 +99,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   navTitle: {
-    marginTop: 4,
     fontSize: 16,
+    marginTop: 4,
   },
   prevButton: {
     fontSize: 16,
@@ -104,8 +113,8 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   nav: {
-    height: 50,
     backgroundColor: 'red',
+    height: 50,
   }
 });
 

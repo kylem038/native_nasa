@@ -121,7 +121,7 @@ export default class FellPerYearChart extends Component{
           }
           return (
             <View style={styles.yearChart} key={i}>
-              <Animated.View style={[{transform: [{scale: bounceValue}], height: yearCountHeight, backgroundColor:scoreColor}, styles.bar, styles.barPageCount]} />
+              <Animated.View style={[{transform: [{scale: bounceValue}], height: yearCountHeight, backgroundColor:scoreColor}, styles.bar]} />
             </View>
           )}
         )}
@@ -132,19 +132,17 @@ export default class FellPerYearChart extends Component{
 
 const styles = StyleSheet.create({
   yearChart: {
-    top: 5,
-    height: 100,
     flexDirection: 'row',
+    height: 100,
     justifyContent: 'center',
     margin: 1,
+    top: 5,
   },
   bar: {
-    width: 30,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     borderTopRightRadius: 10,
     marginLeft: 2,
-  },
-  barPageCount: {
+    width: 30,
   },
 });
