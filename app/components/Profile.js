@@ -23,6 +23,13 @@ class Profile extends Component {
     this.state = {};
   }
 
+  _logout() {
+    this.props.navigator.push({
+      component: Login,
+      title: 'Login',
+    });
+  }
+
   render() {
     const { user } = this.props;
     if (user) {
@@ -35,6 +42,12 @@ class Profile extends Component {
         <Text style={styles.name}>Hello</Text>
         <Text style={styles.name}>{user.name}</Text>
         <Text style={styles.email}>{user.email}</Text>
+        <TouchableHighlight
+          style={styles.signOutButton}
+          onPress={this._logout.bind(this)}
+        >
+          <Text style={styles.buttonText}>Log out</Text>
+        </TouchableHighlight>
       </View>);
     } else {
       return null;
@@ -74,5 +87,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '100',
     top: 50,
+  },
+  signOutButton: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderColor: 'red',
+    borderRadius: 100,
+    borderWidth: 5,
+    height: 120,
+    width: 120,
+    justifyContent: 'center',
+    margin: 10,
+    top: 100,
+  },
+  buttonText: {
+    color: 'red',
+    fontSize: 25,
+    fontWeight: 'bold',
   },
 })
