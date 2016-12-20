@@ -52,10 +52,10 @@ export default class MassChart extends Component {
 
     let meteorCircles = [];
     Object.values(meteorGrouping).forEach((sizeGroup, i) => {
-      let massHeight = sizeGroup.meteors.length ? sizeGroup.meteors.length : 2;
+      let massRadius = sizeGroup.meteors.length ? sizeGroup.meteors.length : 2;
       meteorCircles.push(
           <View key={i}>
-            <Animated.View style={[{transform: [{scale: bounceValue}], height: (massHeight / 2), width: (massHeight / 2), backgroundColor: sizeGroup.scoreColor}, styles.circle]} />
+            <Animated.View style={[{transform: [{scale: bounceValue}], height: (massRadius / 2), width: (massRadius / 2), backgroundColor: sizeGroup.scoreColor}, styles.circle]} />
             <Text style={styles.label}>{sizeGroup.label}</Text>
           </View>
       )
