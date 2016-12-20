@@ -31,7 +31,7 @@ class Visuals extends Component {
         <ScrollView style={styles.visualsContainer}>
           <View>
             <Text style={styles.title}>Meteorite Mass</Text>
-            <MassChart meteors={this.props.meteors}/>
+            <MassChart meteors={this.props.meteors} meteorGrouping={this.props.meteorGrouping}/>
           </View>
           <View style={styles.perYear}>
             <Text style={styles.title}>Meteors Per Year</Text>
