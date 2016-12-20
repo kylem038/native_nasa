@@ -82,7 +82,7 @@ let NavigationBarRouteMapper = {
           <Text style={styles.nextButton}>Visuals »</Text>
         </TouchableHighlight>
       )
-    } else if (index > 0) {
+    } else if (index > 0 && index < routes.length ) {
       return (
         <TouchableHighlight onPress={() => navigator.push(routes[index + 1])}>
           <Text style={styles.nextButton}>Next »</Text>
